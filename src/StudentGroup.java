@@ -175,6 +175,11 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
+		if(date == null)
+		{
+			throw new IllegalArgumentException();
+		}
+			
 		 LinkedList<Student> l1 = new LinkedList<Student>(Arrays.asList(this.students));
 		   for(Student s : this.students)
 		   {
