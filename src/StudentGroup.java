@@ -175,7 +175,14 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
-		return null;
+		 LinkedList<Student> l1 = new LinkedList<Student>(Arrays.asList(this.students));
+		   for(Student s : this.students)
+		   {
+		       if(s.getBirthDate().compareTo(date) == 0)
+				   l1.add(s);
+		   }
+		   return  l1.toArray(new Student[l1.size()]);
+		
 		
 	}
 
