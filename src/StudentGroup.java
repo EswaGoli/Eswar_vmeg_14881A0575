@@ -1,4 +1,4 @@
-import java.util.Date;
+import java.util.*;
 
 /**
  * A fix-sized array of students
@@ -71,13 +71,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void add(Student student, int index) {
 		// Add your implementation here
-		 Student[] t= new Student[this.students.length+1];
-		 for(int i = 0; i < index; i++)
-			 t[i] = this.students[i];
-		 t[index] = student;
-		 for(int i = index; i < this.students.length; i++)
-			 t[i+1] = this.students[i];
-		 this.students = t;
+		
 	}
 
 	@Override
@@ -113,6 +107,15 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeFromElement(Student student) {
 		// Add your implementation here
+		if(student == null)
+			throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l1 = new LinkedList<Student>(Arrays.asList(this.students));
+			int firstInd = l1.indexOf(student);
+			for(int i=firstInd+1;i<l1.size();i++)
+				l1.remove(i);
+			this.students = l1.toArray(new Student[l1.size()]);
+		}
 	}
 
 	@Override
