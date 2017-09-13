@@ -103,6 +103,11 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeFromIndex(int index) {
 		// Add your implementation here
+		Student[] temp = new Student[index]; 
+		 int c = 0;
+		 for(int i = 0; i < index; i++)
+			 temp[i] = this.students[i];
+		 this.students = temp; 
 	}
 
 	@Override
