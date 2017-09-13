@@ -122,6 +122,15 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToIndex(int index) {
 		// Add your implementation here
+		if(index<0 || index>=students.length)
+			throw new IllegalArgumentException();
+		else{
+			LinkedList<Student> l1 = new LinkedList<Student>(Arrays.asList(this.students));
+			for(int i=0;i<index;i++)
+				l1.remove(i);
+			
+		}
+
 		
 	}
 
@@ -133,19 +142,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void bubbleSort() {
 		// Add your implementation here
-		 for(int i = 0; i < this.students.length; i++)
-		  {
-			  
-	          for(int j = 0; j < this.students.length-i-1; j++)
-			  {
-                   if(this.students[j].getId() > this.students[j+1].getId())
-				   {
-					   Student temp = this.students[j];
-					   this.students[j] = this.students[j+1];
-					   this.students[j+1] = temp;
-				   }
-			  }	   
-		  }
+		 
 		
 	}
 
