@@ -149,7 +149,13 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
-		return null;
+		 ArrayList<Student> temp = new ArrayList<>();
+		   for(Student s : this.students)
+		   {
+		       if(s.getBirthDate().compareTo(date) == 0)
+				   temp.add(s);
+		   }
+		   return  temp.toArray(new Student[temp.size()]);
 	}
 
 	@Override
