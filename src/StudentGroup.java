@@ -242,12 +242,23 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getStudentsWithMaxAvgMark() {
 		// Add your implementation here
-		return null;
+			double maxavg = 0;
+		  for(Student s : this.students)
+			  if(s.getAvgMark() > maxavg) maxavg = s.getAvgMark();
+		  ArrayList<Student> temp = new ArrayList<>();
+		  for(Student s : this.students)
+			  if(s.getAvgMark() == maxavg)  temp.add(s);
+		  return  temp.toArray(new Student[temp.size()]);
 	}
 
 	@Override
 	public Student getNextStudent(Student student) {
 		// Add your implementation here
-		return null;
+		this.bubbleSort();
+		   int i;
+		   for(i = 0; i < this.students.length; i++)
+			   if(this.students[i].equals(student)) break;
+		   return this.students[i+1];
+
 	}
 }
