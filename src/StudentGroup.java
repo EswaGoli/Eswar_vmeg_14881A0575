@@ -137,11 +137,37 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToElement(Student student) {
 		// Add your implementation here
+		LinkedList<Student> l1 = new LinkedList<Student>(Arrays.asList(this.students));
+		int c=0;
+		if(student == null)
+		{
+			throw new IllegalArgumentException();
+		}
+		else
+		{
+			for(int i=0;i<l1.size();i++)
+			{
+				if(l1.get(i) == student)
+				{
+					l1.remove(i);
+					c=i;
+					break;
+				}	
+			}
+		if(c>0)
+		{
+			for(int i=0;i<c;i++)
+			{
+				l1.remove(i);
+			}
+		}
+	}
 	}
 
 	@Override
 	public void bubbleSort() {
 		// Add your implementation here
+
 		 
 		
 	}
