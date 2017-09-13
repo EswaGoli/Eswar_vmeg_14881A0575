@@ -154,6 +154,7 @@ public class StudentGroup implements StudentArrayOperation {
 					break;
 				}	
 			}
+		}
 		if(c>0)
 		{
 			for(int i=0;i<c;i++)
@@ -161,32 +162,24 @@ public class StudentGroup implements StudentArrayOperation {
 				l1.remove(i);
 			}
 		}
-	}
+	
 	}
 
 	@Override
 	public void bubbleSort() {
 		// Add your implementation here
-
-		 
-		
 	}
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
-		if(date == null)
-		{
-			throw new IllegalArgumentException();
-		}
-			
-		 LinkedList<Student> l1 = new LinkedList<Student>(Arrays.asList(this.students));
+		ArrayList<Student> temp = new ArrayList<>();
 		   for(Student s : this.students)
 		   {
 		       if(s.getBirthDate().compareTo(date) == 0)
-				   l1.add(s);
+				   temp.add(s);
 		   }
-		   return  l1.toArray(new Student[l1.size()]);
+		   return  temp.toArray(new Student[temp.size()]);
 		
 		
 	}
@@ -194,25 +187,56 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
 		// Add your implementation here
-		return null;
+		 ArrayList<Student> temp = new ArrayList<>();
+		   for(Student s : this.students)
+		   {
+		       if(s.getBirthDate().after(firstDate) && s.getBirthDate().before(lastDate))
+				   temp.add(s);
+		   }
+		   return  temp.toArray(new Student[temp.size()]); 
 	}
 
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
 		// Add your implementation here
-		return null;
+		  ArrayList<Student> temp = new ArrayList<>();
+		   Calendar cal = getCalendar(date);
+		   cal.add(Calendar.DATE, days);
+           date = cal.getTime();
+		   for(Student s : this.students)
+		   {
+		       if(s.getBirthDate().before(date))
+				   temp.add(s);
+		   }
+		   return  temp.toArray(new Student[temp.size()]); 
+	}
+	
+	public Calendar getCalendar(Date date)
+	{
+		Calendar c=Calendar.getInstance();
+		c.setTime(date);
+		return c;
 	}
 
 	@Override
 	public int getCurrentAgeByDate(int indexOfStudent) {
 		// Add your implementation here
-		return 0;
+		Date now = new Date();
+           	return this.students[indexOfStudent].getBirthDate().getYear() - now.getYear();
+		
 	}
 
 	@Override
 	public Student[] getStudentsByAge(int age) {
 		// Add your implementation here
-		return null;
+		 ArrayList<Student> temp = new ArrayList<>();
+		  for(int i = 0; i < this.students.length; i++)
+		  {
+		      if(getCurrentAgeByDate(i) == age)
+				  temp.add(this.students[i]);
+		  }
+          return  temp.toArray(new Student[temp.size()]);
+		
 	}
 
 	@Override
