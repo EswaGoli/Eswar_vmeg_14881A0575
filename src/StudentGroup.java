@@ -131,31 +131,14 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void bubbleSort() {
 		// Add your implementation here
-		for(int i = 0; i < this.students.length; i++)
-		  {
-			  
-	          for(int j = 0; j < this.students.length-i-1; j++)
-			  {
-                   if(this.students[j].getId() > this.students[j+1].getId())
-				   {
-					   Student temp = this.students[j];
-					   this.students[j] = this.students[j+1];
-					   this.students[j+1] = temp;
-				   }
-			  }	   
-		  }
+		
 	}
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
-		 ArrayList<Student> temp = new ArrayList<>();
-		   for(Student s : this.students)
-		   {
-		       if(s.getBirthDate().compareTo(date) == 0)
-				   temp.add(s);
-		   }
-		   return  temp.toArray(new Student[temp.size()]);
+		return null;
+		
 	}
 
 	@Override
